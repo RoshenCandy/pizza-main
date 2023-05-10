@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   isOpen: false,
@@ -6,14 +6,14 @@ const initialState = {
 };
 
 const addPizzaSlice = createSlice({
-  name: "addPizza",
+  name: 'addPizza',
   initialState,
   reducers: {
-    setIsOpen(state, action){
-      state.isOpen = action.payload
+    setIsOpen(state, action) {
+      state.isOpen = action.payload;
     },
-    setPizzaState(state, action){
-      state.pizzaState = action.payload
+    setPizzaState(state, action) {
+      state.pizzaState = action.payload;
     },
   },
 });

@@ -1,7 +1,7 @@
-import dbConnect from "./dbConnect"
+import dbConnect from './dbConnect';
 
 const start = async () => {
-  await dbConnect()
-}
+  await dbConnect();
+};
 
-export default start
+export default start;

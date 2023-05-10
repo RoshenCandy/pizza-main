@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   totalPrice: 0,
@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const cartSlice = createSlice({
-  name: "cart",
+  name: 'cart',
   initialState,
   reducers: {
     addItem(state, action) {
@@ -21,10 +21,7 @@ const cartSlice = createSlice({
         });
       }
 
-      state.totalPrice = state.items.reduce(
-        (sum, obj) => obj.price * obj.count + sum,
-        0
-      );
+      state.totalPrice = state.items.reduce((sum, obj) => obj.price * obj.count + sum, 0);
       state.totalCount++;
     },
     minusItem(state, action) {

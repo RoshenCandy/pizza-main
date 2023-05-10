@@ -1,23 +1,27 @@
-import React from 'react'
-import { useSession } from "next-auth/react";
+/* eslint-disable react-hooks/rules-of-hooks */
+import React from 'react';
+import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import AdminHeader from '../../common/components/AdminHeader';
 import OrderPage from '../../common/pages/OrderPage';
 
 const order = () => {
-  const { status } = useSession()
-  const { push } = useRouter()
+  const { status } = useSession();
+  const { push } = useRouter();
 
-  let content
+  let content;
 
-  if (status === 'loading') content = <></>
-  else if (status === 'unauthenticated') push('/auth/login')
-  else content = <div className='wrapper'>
-    <AdminHeader img='../img/pizza-logo.svg'/>
-    <OrderPage/>
-  </div>
+  if (status === 'loading') content = <></>;
+  else if (status === 'unauthenticated') push('/auth/login');
+  else
+    content = (
+      <div className="wrapper">
+        <AdminHeader img="../img/pizza-logo.svg" />
+        <OrderPage />
+      </div>
+    );
 
-  return content
-}
+  return content;
+};
 
-export default order
+export default order;

@@ -1,4 +1,4 @@
-import mongoose, { Schema } from 'mongoose'
+import mongoose, { Schema } from 'mongoose';
 
 const PizzaSchema = new Schema({
   title: { type: String, required: true },
@@ -8,8 +8,8 @@ const PizzaSchema = new Schema({
   types: [{ type: Number }],
   category: { type: Number, required: true },
   rating: { type: Number, required: true },
-  ordersCount: { type: Number, required: true }
-})
+  ordersCount: { type: Number, required: true },
+});
 
-const Pizza = mongoose.models.Pizza || mongoose.model('Pizza', PizzaSchema)
-export default Pizza
+const Pizza = mongoose.models.Pizza || mongoose.model('Pizza', PizzaSchema);
+export default Pizza;

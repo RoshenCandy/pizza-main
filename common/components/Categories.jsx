@@ -1,12 +1,5 @@
 function Categories({ id, changeCategory }) {
-  const categories = [
-    `Всі`,
-    `М'ясні`,
-    `Вегетаріанські`,
-    `Гриль`,
-    `Гострі`,
-    `Закриті`,
-  ];
+  const categories = [`Всі`, `М'ясні`, `Вегетаріанські`, `Гриль`, `Гострі`, `Закриті`];
 
   return (
     <div className="categories">
@@ -16,7 +9,7 @@ function Categories({ id, changeCategory }) {
             onClick={() => {
               changeCategory(i);
             }}
-            className={id === i ? "active" : ""}
+            className={id === i ? 'active' : ''}
             key={`category-${i}`}
           >
             {category}

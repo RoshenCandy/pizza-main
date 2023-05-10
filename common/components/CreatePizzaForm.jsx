@@ -1,93 +1,87 @@
-import React, { useEffect, useState } from 'react'
-import { Form, Input, Select, Button, InputNumber, message } from 'antd'
-import axios from 'axios'
-import { useDispatch, useSelector } from 'react-redux'
-import { setIsOpen, setPizzaState } from '../redux/slices/addPizzaSlice'
+import React, { useEffect } from 'react';
+import { Form, Input, Select, Button, InputNumber, message } from 'antd';
+import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { setIsOpen, setPizzaState } from '../redux/slices/addPizzaSlice';
 
-const sizesValue = [26, 30, 40]
+const sizesValue = [26, 30, 40];
 
 export const typesValue = [
   {
     type: 0,
-    name: 'тонке'
+    name: 'тонке',
   },
   {
     type: 1,
-    name: 'традиційне'
+    name: 'традиційне',
   },
-]
+];
 
 export const categoriesValue = [
   {
     category: 1,
-    name: 'М\'ясні'
+    name: "М'ясні",
   },
   {
     category: 2,
-    name: 'Вегетаріанські'
+    name: 'Вегетаріанські',
   },
   {
     category: 3,
-    name: 'Гриль'
+    name: 'Гриль',
   },
   {
     category: 4,
-    name: 'Гострі'
+    name: 'Гострі',
   },
   {
     category: 5,
-    name: 'Закриті'
+    name: 'Закриті',
   },
-]
-
+];
 
 function CreatePizzaForm({ editPizza }) {
-  const dispatch = useDispatch()
-  const { pizzaState } = useSelector(state => state.addPizza)
+  const dispatch = useDispatch();
+  const { pizzaState } = useSelector((state) => state.addPizza);
   const [form] = Form.useForm();
 
   const onCreateFinish = (e) => {
-    axios.post('http://localhost:3000/api/pizza', { ...e, rating: 1, ordersCount: 0 })
-      .then(response => console.log(response))
-      .catch(error => message.error(error))
+    axios
+      .post('http://localhost:3000/api/pizza', { ...e, rating: 1, ordersCount: 0 })
+      .then((response) => console.log(response))
+      .catch((error) => message.error(error));
 
-    message.success('Піцу створено')
-    form.resetFields()
-    dispatch(setPizzaState(!pizzaState))
-    dispatch(setIsOpen(false))
-  }
+    message.success('Піцу створено');
+    form.resetFields();
+    dispatch(setPizzaState(!pizzaState));
+    dispatch(setIsOpen(false));
+  };
 
   const onEditFinish = (e) => {
-    axios.patch(`http://localhost:3000/api/pizza/${editPizza._id}`, { ...e })
-      .then(response => console.log(response))
-      .catch(error => message.error(error))
+    axios
+      .patch(`http://localhost:3000/api/pizza/${editPizza._id}`, { ...e })
+      .then((response) => console.log(response))
+      .catch((error) => message.error(error));
 
-    message.success('Піцу відредаговано')
-    form.resetFields()
-    dispatch(setPizzaState(!pizzaState))
-    dispatch(setIsOpen(false))
-  }
+    message.success('Піцу відредаговано');
+    form.resetFields();
+    dispatch(setPizzaState(!pizzaState));
+    dispatch(setIsOpen(false));
+  };
 
   useEffect(() => {
-    form.resetFields()
-  }, [editPizza])
+    form.resetFields();
+  }, [editPizza]);
 
   return (
-    <Form
-      layout="vertical"
-      onFinish={editPizza ? onEditFinish : onCreateFinish}
-      autoComplete="off"
-      form={form}
-      className='form'
-      requiredMark={false}
-    >
+    <Form layout="vertical" onFinish={editPizza ? onEditFinish : onCreateFinish} autoComplete="off" form={form} className="form" requiredMark={false}>
       <Form.Item
         label="Назва піци"
         name="title"
         rules={[{ required: true, message: 'Введіть назву піци' }]}
         initialValue={editPizza ? editPizza.title : undefined}
       >
-        <Input placeholder='Назва піци' />
+        <Input placeholder="Назва піци" />
       </Form.Item>
 
       <Form.Item
@@ -96,16 +90,16 @@ function CreatePizzaForm({ editPizza }) {
         rules={[{ required: true, message: 'Введіть ціну' }]}
         initialValue={editPizza ? editPizza.price : undefined}
       >
-        <InputNumber placeholder='Ціна' controls={false} />
+        <InputNumber placeholder="Ціна" controls={false} />
       </Form.Item>
 
       <Form.Item
-        label='Фото'
+        label="Фото"
         name="image"
         rules={[{ required: true, message: 'Введіть URL зображення' }]}
         initialValue={editPizza ? editPizza.image : undefined}
       >
-        <Input placeholder='Введіть URL' />
+        <Input placeholder="Введіть URL" />
       </Form.Item>
 
       <Form.Item
@@ -120,11 +114,7 @@ function CreatePizzaForm({ editPizza }) {
         ]}
         initialValue={editPizza ? editPizza.sizes : undefined}
       >
-        <Select
-          mode="multiple"
-          size="large"
-          placeholder="Виберіть розмір"
-        >
+        <Select mode="multiple" size="large" placeholder="Виберіть розмір">
           {sizesValue.map((item) => (
             <Select.Option key={item} value={item}>
               {item}
@@ -145,11 +135,7 @@ function CreatePizzaForm({ editPizza }) {
         ]}
         initialValue={editPizza ? editPizza.types : undefined}
       >
-        <Select
-          mode="multiple"
-          size="large"
-          placeholder="Виберіть тип"
-        >
+        <Select mode="multiple" size="large" placeholder="Виберіть тип">
           {typesValue.map((item) => (
             <Select.Option key={item.type} value={item.type}>
               {item.name}
@@ -170,11 +156,7 @@ function CreatePizzaForm({ editPizza }) {
         ]}
         initialValue={editPizza ? editPizza.category : undefined}
       >
-        <Select
-          size="large"
-          placeholder="Виберіть категорію"
-          placement='topRight'
-        >
+        <Select size="large" placeholder="Виберіть категорію" placement="topRight">
           {categoriesValue.map((item) => (
             <Select.Option key={item.category} value={item.category}>
               {item.name}
@@ -183,9 +165,11 @@ function CreatePizzaForm({ editPizza }) {
         </Select>
       </Form.Item>
 
-      <Button className='button formButton' htmlType='submit'>Зберегти</Button>
+      <Button className="button formButton" htmlType="submit">
+        Зберегти
+      </Button>
     </Form>
-  )
+  );
 }
 
-export default CreatePizzaForm
+export default CreatePizzaForm;

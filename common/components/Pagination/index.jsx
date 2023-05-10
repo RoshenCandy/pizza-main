@@ -1,6 +1,6 @@
-import ReactPaginate from "react-paginate";
+import ReactPaginate from 'react-paginate';
 
-import styles from "./Pagination.module.scss";
+import styles from './Pagination.module.scss';
 
 function Pagination({ currentPage, onChangePage }) {
   return (

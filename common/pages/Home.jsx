@@ -1,28 +1,22 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useEffect, useContext, useRef } from "react";
-import Categories from "../components/Categories";
-import Sort, { sortBy } from "../components/Sort";
-import PizzaBlock from "../components/PizzaBlock/index";
-import Skeleton from "../components/PizzaBlock/skeleton";
-import Pagination from "../components/Pagination";
-import axios from "axios";
-import qs from "qs";
-import { searchContext } from "../../pages/index";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  setCategoryId,
-  setCurrentPage,
-  setFilters,
-} from "../redux/slices/filterSlice";
-import { useRouter } from "next/router";
+import { useState, useEffect, useContext, useRef } from 'react';
+import Categories from '../components/Categories';
+import Sort, { sortBy } from '../components/Sort';
+import PizzaBlock from '../components/PizzaBlock/index';
+import Skeleton from '../components/PizzaBlock/skeleton';
+import Pagination from '../components/Pagination';
+import axios from 'axios';
+import qs from 'qs';
+import { searchContext } from '../../pages/index';
+import { useSelector, useDispatch } from 'react-redux';
+import { setCategoryId, setCurrentPage, setFilters } from '../redux/slices/filterSlice';
+import { useRouter } from 'next/router';
 
 function Home() {
   const dispatch = useDispatch();
   const isSearch = useRef(false);
   const isMounted = useRef(false);
-  const { categoryId, sort, currentPage } = useSelector(
-    (state) => state.filter
-  );
+  const { categoryId, sort, currentPage } = useSelector((state) => state.filter);
   const sortType = sort.sortName;
   const { searchValue } = useContext(searchContext);
   // const [currentPage, setCurrentPage] = useState(1);
@@ -31,7 +25,7 @@ function Home() {
   const onClickCategory = (id) => {
     dispatch(setCategoryId(id));
   };
-  const { push } = useRouter()
+  const { push } = useRouter();
 
   const getPizzas = () => {
     setIsLoading(true);
@@ -47,8 +41,8 @@ function Home() {
   };
 
   useEffect(() => {
-    getPizzas()
-    
+    getPizzas();
+
     window.scrollTo(0, 0);
   }, [categoryId, sortType, searchValue, currentPage]);
 
@@ -60,7 +54,7 @@ function Home() {
         currentPage,
       });
 
-      push(`?${query}`)
+      push(`?${query}`);
     }
 
     isMounted.current = true;
@@ -79,10 +73,7 @@ function Home() {
   return (
     <div className="container home">
       <div className="content__top">
-        <Categories
-          id={categoryId}
-          changeCategory={(i) => onClickCategory(i)}
-        />
+        <Categories id={categoryId} changeCategory={(i) => onClickCategory(i)} />
         <Sort />
       </div>
       <h2 className="content__title">Все пиццы</h2>
@@ -92,10 +83,7 @@ function Home() {
             ? [...new Array(6)].map((_, index) => <Skeleton key={index} />)
             : items.map((pizza) => <PizzaBlock {...pizza} key={pizza._id} />)}
         </div>
-        <Pagination
-          currentPage={currentPage}
-          onChangePage={(number) => dispatch(setCurrentPage(number))}
-        />
+        <Pagination currentPage={currentPage} onChangePage={(number) => dispatch(setCurrentPage(number))} />
       </div>
     </div>
   );

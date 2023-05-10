@@ -1,47 +1,6 @@
-@import "./variables";
-@import "./libs/normalize";
-@import "./components/all";
-
-// @font-face {
-//   font-family: "Proxima Nova";
-//   src: url("./fonts/ProximaNova-Black.eot");
-//   src: local("./fonts/Proxima Nova Black"), local("ProximaNova-Black"),
-//     url("./fonts/ProximaNova-Black.eot?#iefix") format("embedded-opentype"),
-//     url("./fonts/ProximaNova-Black.woff") format("woff"),
-//     url("./fonts/ProximaNova-Black.ttf") format("truetype");
-//   font-weight: 900;
-//   font-style: normal;
-// }
-// @font-face {
-//   font-family: "Proxima Nova";
-//   src: url("./fonts/ProximaNova-Bold.eot");
-//   src: local("./fonts/Proxima Nova Bold"), local("ProximaNova-Bold"),
-//     url("./fonts/ProximaNova-Bold.eot?#iefix") format("embedded-opentype"),
-//     url("./fonts/ProximaNova-Bold.woff") format("woff"),
-//     url("./fonts/ProximaNova-Bold.ttf") format("truetype");
-//   font-weight: bold;
-//   font-style: normal;
-// }
-// @font-face {
-//   font-family: "Proxima Nova";
-//   src: url("./fonts/ProximaNova-Regular.eot");
-//   src: local("./fonts/Proxima Nova Regular"), local("ProximaNova-Regular"),
-//     url("./fonts/ProximaNova-Regular.eot?#iefix") format("embedded-opentype"),
-//     url("./fonts/ProximaNova-Regular.woff") format("woff"),
-//     url("./fonts/ProximaNova-Regular.ttf") format("truetype");
-//   font-weight: normal;
-//   font-style: normal;
-// }
-// @font-face {
-//   font-family: "Proxima Nova";
-//   src: url("./fonts/ProximaNova-Extrabld.eot");
-//   src: local("./fonts/Proxima Nova Extrabold"), local("ProximaNova-Extrabld"),
-//     url("./fonts/ProximaNova-Extrabld.eot?#iefix") format("embedded-opentype"),
-//     url("./fonts/ProximaNova-Extrabld.woff") format("woff"),
-//     url("./fonts/ProximaNova-Extrabld.ttf") format("truetype");
-//   font-weight: 800;
-//   font-style: normal;
-// }
+@import './variables';
+@import './libs/normalize';
+@import './components/all';
 
 body {
   background-color: $background;
@@ -118,11 +77,11 @@ body {
   }
 }
 
-.home{
+.home {
   padding: 40px 0;
 }
 
-.cartHome{
+.cartHome {
   padding-bottom: 40px;
 }
 
@@ -410,7 +369,7 @@ body {
   }
 }
 
-.login{
+.login {
   width: 500px;
   background-color: white;
   position: absolute;
@@ -423,15 +382,15 @@ body {
   align-items: center;
 }
 
-.loginForm{
+.loginForm {
   width: 100%;
 
-  .loginButtonItem{
+  .loginButtonItem {
     display: flex;
     justify-content: center;
   }
 
-  .loginButton{
+  .loginButton {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -440,36 +399,36 @@ body {
   }
 }
 
-.adminContainer{
+.adminContainer {
   padding: 20px;
 }
 
-.modal{
+.modal {
   padding: 20px;
   top: 0;
 }
 
-.tableButton{
+.tableButton {
   line-height: 1px;
 }
 
-.popconfirm{
+.popconfirm {
   font-size: 20px;
   display: flex;
   justify-content: center;
 }
 
-.rate{
+.rate {
   color: #fe5f1e;
 }
 
-.pizza-options{
+.pizza-options {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 10px;
 
-  .edit_btn{
+  .edit_btn {
     border: none;
     font-size: 20px;
     display: flex;
@@ -477,7 +436,7 @@ body {
     padding: 0;
     color: black;
 
-    &:hover{
+    &:hover {
       color: black;
     }
   }

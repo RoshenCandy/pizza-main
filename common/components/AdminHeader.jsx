@@ -1,8 +1,8 @@
-import Link from "next/link"
-import { useRouter } from "next/router";
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 function AdminHeader({ img }) {
-  const { pathname } = useRouter()
+  const { pathname } = useRouter();
 
   return (
     <div className="header">
