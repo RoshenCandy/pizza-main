@@ -77,14 +77,10 @@ function Home() {
         <Sort />
       </div>
       <h2 className="content__title">Все пиццы</h2>
-      <div className="qwe">
-        <div className="content__items">
-          {isLoading
-            ? [...new Array(6)].map((_, index) => <Skeleton key={index} />)
-            : items.map((pizza) => <PizzaBlock {...pizza} key={pizza._id} />)}
-        </div>
-        <Pagination currentPage={currentPage} onChangePage={(number) => dispatch(setCurrentPage(number))} />
+      <div className="content__items">
+        {isLoading ? [...new Array(6)].map((_, index) => <Skeleton key={index} />) : items.map((pizza) => <PizzaBlock {...pizza} key={pizza._id} />)}
       </div>
+      <Pagination currentPage={currentPage} onChangePage={(number) => dispatch(setCurrentPage(number))} />
     </div>
   );
 }
