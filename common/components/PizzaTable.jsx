@@ -17,14 +17,14 @@ const PizzaTable = () => {
   const [editPizza, setEditPizza] = useState(undefined);
 
   const getPizzas = () => {
-    axios.get(`http://localhost:3000/api/pizza/all`).then((response) => {
+    axios.get(`https://pizza-main-ecru.vercel.app/api/pizza/all`).then((response) => {
       console.log(response);
       setDataSource(response.data);
     });
   };
 
   const deletePizza = (id) => {
-    axios.delete(`http://localhost:3000/api/pizza/${id}`).then((response) => {
+    axios.delete(`https://pizza-main-ecru.vercel.app/api/pizza/${id}`).then((response) => {
       console.log(response);
     });
   };

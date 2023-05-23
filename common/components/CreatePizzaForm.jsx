@@ -47,7 +47,7 @@ function CreatePizzaForm({ editPizza }) {
 
   const onCreateFinish = (e) => {
     axios
-      .post('http://localhost:3000/api/pizza', { ...e, rating: 1, ordersCount: 0 })
+      .post('https://pizza-main-ecru.vercel.app/api/pizza', { ...e, rating: 1, ordersCount: 0 })
       .then((response) => console.log(response))
       .catch((error) => message.error(error));
 

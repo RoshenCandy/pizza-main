@@ -14,7 +14,7 @@ export const authOptions = {
       async authorize(credentials, req) {
         const { username, password } = credentials;
 
-        const user = await axios.post('http://localhost:3000/api/auth/login', { username, password });
+        const user = await axios.post('https://pizza-main-ecru.vercel.app/api/auth/login', { username, password });
 
         if (user) return user;
         return 'User not defined';

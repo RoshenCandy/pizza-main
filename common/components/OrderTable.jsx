@@ -6,7 +6,7 @@ const OrderTable = () => {
   const [dataSource, setDataSource] = useState();
 
   const getOrder = () => {
-    axios.get(`http://localhost:3000/api/pizza/order`).then((response) => {
+    axios.get(`https://pizza-main-ecru.vercel.app/api/pizza/order`).then((response) => {
       console.log('res', response);
       setDataSource(response.data);
     });
