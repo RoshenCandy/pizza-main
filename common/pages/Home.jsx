@@ -32,7 +32,7 @@ function Home() {
 
     axios
       .get(
-        `${PROCESS.ENV.DOMAIN_URL}/api/pizza?sortBy=${sort.sortName}&categoryId=${categoryId}&currentPage=${currentPage}&limit=4&search=${searchValue}`
+        `https://pizza-main-ecru.vercel.app/api/pizza?sortBy=${sort.sortName}&categoryId=${categoryId}&currentPage=${currentPage}&limit=4&search=${searchValue}`
       )
       .then((response) => {
         setItems(response.data);
