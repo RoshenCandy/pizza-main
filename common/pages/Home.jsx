@@ -11,6 +11,9 @@ import { searchContext } from '../../pages/index';
 import { useSelector, useDispatch } from 'react-redux';
 import { setCategoryId, setCurrentPage, setFilters } from '../redux/slices/filterSlice';
 import { useRouter } from 'next/router';
+import dotenv from 'dotenv';
+
+const env = dotenv.parse(fs.readFileSync('.env.e2e', { encoding: 'utf8' }));
 
 function Home() {
   const dispatch = useDispatch();
@@ -31,9 +34,7 @@ function Home() {
     setIsLoading(true);
 
     axios
-      .get(
-        `https://pizza-main-ecru.vercel.app/api/pizza?sortBy=${sort.sortName}&categoryId=${categoryId}&currentPage=${currentPage}&limit=4&search=${searchValue}`
-      )
+      .get(`${env.DOMAIN_URL}/api/pizza?sortBy=${sort.sortName}&categoryId=${categoryId}&currentPage=${currentPage}&limit=4&search=${searchValue}`)
       .then((response) => {
         setItems(response.data);
         setIsLoading(false);
