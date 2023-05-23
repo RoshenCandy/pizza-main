@@ -32,7 +32,7 @@ function Home() {
 
     axios
       .get(
-        `http://localhost:3000/api/pizza?sortBy=${sort.sortName}&categoryId=${categoryId}&currentPage=${currentPage}&limit=4&search=${searchValue}`
+        `${PROCESS.ENV.DOMAIN_URL}/api/pizza?sortBy=${sort.sortName}&categoryId=${categoryId}&currentPage=${currentPage}&limit=4&search=${searchValue}`
       )
       .then((response) => {
         setItems(response.data);

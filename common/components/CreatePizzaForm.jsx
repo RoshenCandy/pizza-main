@@ -59,7 +59,7 @@ function CreatePizzaForm({ editPizza }) {
 
   const onEditFinish = (e) => {
     axios
-      .patch(`http://localhost:3000/api/pizza/${editPizza._id}`, { ...e })
+      .patch(`${PROCESS.ENV.DOMAIN_URL}/api/pizza/${editPizza._id}`, { ...e })
       .then((response) => console.log(response))
       .catch((error) => message.error(error));
 
