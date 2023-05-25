@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { Form, Input, Select, Button, InputNumber, message } from 'antd';
 import axios from 'axios';
@@ -47,7 +48,7 @@ function CreatePizzaForm({ editPizza }) {
 
   const onCreateFinish = (e) => {
     axios
-      .post('https://pizza-main-ecru.vercel.app/api/pizza', { ...e, rating: 1, ordersCount: 0 })
+      .post(`${process.env.DOMAIN_URL}/api/pizza`, { ...e, rating: 1, ordersCount: 0 })
       .then((response) => console.log(response))
       .catch((error) => message.error(error));
 
@@ -59,7 +60,7 @@ function CreatePizzaForm({ editPizza }) {
 
   const onEditFinish = (e) => {
     axios
-      .patch(`https://pizza-main-ecru.vercel.app/api/pizza/${editPizza._id}`, { ...e })
+      .patch(`${process.env.DOMAIN_URL}/api/pizza/${editPizza._id}`, { ...e })
       .then((response) => console.log(response))
       .catch((error) => message.error(error));
 

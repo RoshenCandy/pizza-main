@@ -19,7 +19,6 @@ function Home() {
   const { categoryId, sort, currentPage } = useSelector((state) => state.filter);
   const sortType = sort.sortName;
   const { searchValue } = useContext(searchContext);
-  // const [currentPage, setCurrentPage] = useState(1);
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const onClickCategory = (id) => {
@@ -32,7 +31,7 @@ function Home() {
 
     axios
       .get(
-        `https://pizza-main-ecru.vercel.app/api/pizza?sortBy=${sort.sortName}&categoryId=${categoryId}&currentPage=${currentPage}&limit=4&search=${searchValue}`
+        `${process.env.DOMAIN_URL}/api/pizza?sortBy=${sort.sortName}&categoryId=${categoryId}&currentPage=${currentPage}&limit=4&search=${searchValue}`
       )
       .then((response) => {
         setItems(response.data);

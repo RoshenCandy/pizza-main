@@ -13,13 +13,13 @@ const OrderForm = (pizzas) => {
 
   const onFinish = (e) => {
     axios
-      .post('https://pizza-main-ecru.vercel.app/api/pizza/order', { ...e, pizza: [...pizzas.pizzas] })
+      .post(`${process.env.DOMAIN_URL}/api/pizza/order`, { ...e, pizza: [...pizzas.pizzas] })
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
 
     pizzas.pizzas.map((el) => {
       axios
-        .patch(`https://pizza-main-ecru.vercel.app/api/pizza?id=${el.id}`, { count: el.count })
+        .patch(`${process.env.DOMAIN_URL}/api/pizza?id=${el.id}`, { count: el.count })
         .then((res) => console.log(res))
         .catch((error) => console.log(error));
     });

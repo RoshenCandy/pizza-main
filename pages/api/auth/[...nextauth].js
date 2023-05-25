@@ -14,13 +14,15 @@ export const authOptions = {
       async authorize(credentials, req) {
         const { username, password } = credentials;
 
-        const user = await axios.post('https://pizza-main-ecru.vercel.app/api/auth/login', { username, password });
+        const user = await axios.post(`${process.env.DOMAIN_URL}/api/auth/login`, { username, password });
 
         if (user) return user;
         return 'User not defined';
       },
     }),
   ],
+
+  secret: process.env.NEXT_PUBLIC_SECRET,
 
   session: {
     strategy: 'jwt',
