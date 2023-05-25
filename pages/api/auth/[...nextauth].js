@@ -22,7 +22,7 @@ export const authOptions = {
     }),
   ],
 
-  secret: process.env.NEXT_PUBLIC_SECRET,
+  secret: process.env.NEXTAUTH_SECRET,
 
   session: {
     strategy: 'jwt',
