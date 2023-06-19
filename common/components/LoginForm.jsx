@@ -19,11 +19,11 @@ function LoginForm() {
   };
 
   return (
-    <Form form={form} layout="vertical" onFinish={onSubmit} rootClassName="loginForm">
-      <Form.Item label="Логін" name="login">
+    <Form form={form} layout="vertical" onFinish={onSubmit} rootClassName="loginForm" requiredMark={false}>
+      <Form.Item label="Логін" name="login" rules={[{ required: true, message: 'Введіть логін' }]}>
         <Input size="large" />
       </Form.Item>
-      <Form.Item label="Пароль" name="password">
+      <Form.Item label="Пароль" name="password" rules={[{ required: true, message: 'Введіть пароль' }]}>
         <Input.Password size="large" />
       </Form.Item>
 

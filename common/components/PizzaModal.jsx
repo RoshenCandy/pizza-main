@@ -3,7 +3,7 @@ import { Modal } from 'antd';
 
 const PizzaModal = ({ open, close, children }) => {
   return (
-    <Modal open={open} onCancel={close} footer={null} className="modal">
+    <Modal open={open} onCancel={close} footer={null} className="modal" centered>
       {children}
     </Modal>
   );

@@ -31,11 +31,17 @@ const OrderTable = () => {
     {
       title: 'Замовлення',
       dataIndex: 'pizza',
+      width: '250px',
       render: (pizza) =>
         pizza.map((el) => (
-          <p key={el.id}>
-            {el.title}: {el.count}
-          </p>
+          <div key={el.id} className="orderItem">
+            <p className="title">
+              {el.title}
+              {el.count > 1 && <span>: {el.count}</span>}
+            </p>
+            <p>Вид тіста - {el.type}</p>
+            <p>Розмір - {el.size}</p>
+          </div>
         )),
     },
   ];

@@ -41,7 +41,12 @@ const OrderForm = (pizzas) => {
         <Input placeholder="Адреса" />
       </Form.Item>
 
-      <Form.Item label="Номер телефону" name="phoneNumber" rules={[{ required: true, message: 'Введіть номер телефону' }]}>
+      <Form.Item
+        label="Номер телефону"
+        name="phoneNumber"
+        rules={[{ required: true, message: 'Введіть номер телефону', pattern: '^(\\+380|0)?(50|66|95|99|39|63|68|93|96|97|98|67)\\d{7}$' }]}
+        initialValue="+380"
+      >
         <Input placeholder="Номер телефону" />
       </Form.Item>
 

@@ -37,8 +37,10 @@ body {
       grid-template-columns: repeat(2, 1fr);
     }
 
-    @media (max-width: 730px) {
-      grid-template-columns: repeat(1, 1fr);
+    @media (max-width: 811px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
   }
 
@@ -49,11 +51,15 @@ body {
 
     @media (max-width: 1260px) {
       .categories {
-        width: 785;
+        max-width: 785px;
         overflow: auto;
 
         ul {
-          width: 785px;
+          max-width: 785px;
+          display: flex;
+          gap: 20px;
+          flex-wrap: wrap;
+          justify-content: center;
         }
 
         .sort {
@@ -66,7 +72,7 @@ body {
       }
     }
 
-    @media (max-width: 720px) {
+    @media (max-width: 811px) {
       flex-direction: column-reverse;
 
       .categories {
@@ -99,10 +105,18 @@ body {
 }
 
 .cart {
+  @media (max-width: 950px) {
+    padding: 18px;
+  }
+
   &__top {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media (max-width: 500px) {
+      flex-direction: column;
+    }
   }
 
   .content__items {
@@ -166,12 +180,25 @@ body {
     border-top: 1px solid $gray-line;
     padding-top: 30px;
     margin-top: 30px;
+    justify-content: space-around;
+
+    @media (max-width: 500px) {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
 
     &-img {
       display: flex;
       align-items: center;
       margin-right: 15px;
       width: 10%;
+
+      @media (max-width: 500px) {
+        width: 100%;
+        justify-content: center;
+        margin-right: 0;
+      }
 
       img {
         width: 80px;
@@ -183,7 +210,11 @@ body {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      width: 40%;
+
+      @media (max-width: 500px) {
+        width: 100%;
+        align-items: center;
+      }
 
       h3 {
         font-weight: bold;
@@ -204,6 +235,12 @@ body {
       justify-content: space-between;
       width: 13%;
 
+      @media (max-width: 500px) {
+        width: 100%;
+        justify-content: center;
+        gap: 10px;
+      }
+
       &-minus {
         svg {
           path:first-of-type {
@@ -221,7 +258,6 @@ body {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 33%;
 
       b {
         font-weight: bold;
@@ -234,7 +270,6 @@ body {
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      width: 4%;
 
       .button {
         border-color: darken($color: $gray-line, $amount: 10);
@@ -271,6 +306,11 @@ body {
       display: flex;
       justify-content: space-between;
 
+      @media (max-width: 500px) {
+        flex-direction: column;
+        align-items: center;
+      }
+
       span {
         font-size: 22px;
 
@@ -286,6 +326,12 @@ body {
       display: flex;
       justify-content: space-between;
       margin-top: 40px;
+
+      @media (max-width: 500px) {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
 
       .go-back-btn {
         display: flex;
@@ -331,13 +377,16 @@ body {
 
   &--empty {
     margin: 0 auto;
-    width: 560px;
     text-align: center;
     padding: 40px;
 
     h2 {
       font-size: 32px;
       margin-bottom: 10px;
+
+      @media (max-width: 560px) {
+        font-size: 24px;
+      }
     }
 
     p {
@@ -345,6 +394,10 @@ body {
       line-height: 145.4%;
       letter-spacing: 0.01em;
       color: #777777;
+
+      @media (max-width: 560px) {
+        font-size: 14px;
+      }
     }
 
     icon {
@@ -356,6 +409,10 @@ body {
       display: block;
       width: 300px;
       margin: 45px auto 60px;
+
+      @media (max-width: 560px) {
+        width: 200px;
+      }
     }
 
     .button--black {
@@ -364,6 +421,11 @@ body {
       margin: 0 auto;
       font-weight: 600;
       font-size: 18px;
+
+      @media (max-width: 560px) {
+        width: 200px;
+        font-size: 14px;
+      }
     }
   }
 }
@@ -371,14 +433,12 @@ body {
 .login {
   width: 500px;
   background-color: white;
-  position: absolute;
-  left: 32%;
-  top: 25%;
   padding: 18px 18px 0 18px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 15% auto;
 }
 
 .loginForm {
@@ -438,5 +498,26 @@ body {
     &:hover {
       color: black;
     }
+  }
+}
+
+.orderItem {
+  width: max-content;
+  padding: 10px;
+
+  &:nth-child(1) {
+    padding-bottom: 10px;
+  }
+
+  &:nth-last-child(1) {
+    padding-top: 10px;
+  }
+
+  &:not(:last-child) {
+    border-bottom: 1px dashed black;
+  }
+
+  .title {
+    font-weight: 700;
   }
 }
