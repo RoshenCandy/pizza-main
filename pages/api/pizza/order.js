@@ -3,7 +3,21 @@ import Order from '../../../common/models/Order';
 
 const nodemailer = require('nodemailer');
 
-async function sent() {
+function sent(orderInfo) {
+  const message = `<div>
+    <h3>-----Замовник-----</h3>
+    <p>${orderInfo.name}</p>
+    <p>${orderInfo.address}</p>
+    <p>${orderInfo.phoneNumber}</p>
+    <h3>-----Замовлення-----</h3>
+    ${orderInfo.pizza.map(
+      (el) => `<div>
+      <p>${el.title}: ${el.count}</p>
+      <p>Вид тіста - ${el.type}</p>
+      <p>Розмір - ${el.size}</p>
+    </div>`
+    )}
+  </div>`;
   var transport = nodemailer.createTransport({
     host: 'sandbox.smtp.mailtrap.io',
     port: 2525,
@@ -13,12 +27,11 @@ async function sent() {
     },
   });
 
-  const info = await transport.sendMail({
+  const info = transport.sendMail({
     from: 'pizza-order <test@gmail.com>',
     to: 'pizza-admin@gmail.com',
     subject: 'Maxym`s pizza',
-    text: 'Ваше замовлення в обробці',
-    html: 'Ваше замовлення в обробці',
+    html: message.replace(/,/g, '-----'),
   });
 
   console.log('Message sent: %s', info.messageId);
@@ -39,8 +52,8 @@ export default async function handler(req, res) {
       }
     case 'POST':
       try {
-        await sent().catch('sent mail error: ' + console.error);
         const order = await Order.create(req.body);
+        sent(req.body);
         return res.status(200).json(order);
       } catch (error) {
         return res.status(400).json(error);
