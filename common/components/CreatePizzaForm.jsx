@@ -1,9 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
-import { Form, Input, Select, Button, InputNumber, message } from 'antd';
+import { Form, Input, Select, Button, InputNumber, message, Space } from 'antd';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { setIsOpen, setPizzaState } from '../redux/slices/addPizzaSlice';
+import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 
 const sizesValue = [26, 30, 40];
 
@@ -48,7 +49,7 @@ function CreatePizzaForm({ editPizza }) {
 
   const onCreateFinish = (e) => {
     axios
-      .post(`${process.env.DOMAIN_URL}/api/pizza`, { ...e, rating: 1, ordersCount: 0 })
+      .post(`${process.env.DOMAIN_URL}/api/pizza`, { ingredients: e.ingredients, ...e, rating: 1, ordersCount: 0 })
       .then((response) => console.log(response))
       .catch((error) => message.error(error));
 
@@ -165,6 +166,27 @@ function CreatePizzaForm({ editPizza }) {
           ))}
         </Select>
       </Form.Item>
+
+      <p style={{ marginBottom: '10px' }}>Додайте інгрідієнти:</p>
+      <Form.List name="ingredients">
+        {(fields, { add, remove }) => (
+          <>
+            {fields.map(({ key, name, ...restField }) => (
+              <Space key={key} style={{ display: 'flex', marginBottom: 8 }} align="baseline">
+                <Form.Item {...restField} name={[name]} rules={[{ required: true, message: 'Missing ingridient' }]}>
+                  <Input placeholder="Інгрідієнт" size="large" />
+                </Form.Item>
+                <MinusCircleOutlined onClick={() => remove(name)} />
+              </Space>
+            ))}
+            <Form.Item>
+              <Button type="dashed" onClick={() => add()} block icon={<PlusOutlined />}>
+                Додати інгрідієнт
+              </Button>
+            </Form.Item>
+          </>
+        )}
+      </Form.List>
 
       <Button className="button formButton" htmlType="submit">
         Зберегти

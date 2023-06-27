@@ -9,6 +9,7 @@ const PizzaSchema = new Schema({
   category: { type: Number, required: true },
   rating: { type: Number, required: true },
   ordersCount: { type: Number, required: true },
+  ingredients: [{ type: String, required: true }],
 });
 
 const Pizza = mongoose.models.Pizza || mongoose.model('Pizza', PizzaSchema);

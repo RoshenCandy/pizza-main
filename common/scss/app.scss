@@ -521,3 +521,56 @@ body {
     font-weight: 700;
   }
 }
+.card {
+  width: 100%;
+  max-width: 260px;
+  max-height: 260px;
+  height: 100%;
+  perspective: 1000px;
+  cursor: pointer;
+
+  margin: 0 0 5px 15px;
+
+  .content {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    transition: opacity 0.3s, transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    &.front {
+      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      filter: brightness(110%);
+    }
+
+    &.back {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 14px;
+      position: absolute;
+      top: 0;
+      background-color: $background;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      border-radius: 50%;
+      transform: rotateY(180deg);
+      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      filter: brightness(100%);
+    }
+  }
+
+  &:hover .front {
+    transform: rotateY(-180deg) scale(1.05);
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    filter: brightness(100%);
+  }
+
+  &:hover .back {
+    transform: rotateY(0) scale(1.05);
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    filter: brightness(100%);
+  }
+}

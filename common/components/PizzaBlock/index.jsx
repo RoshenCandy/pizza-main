@@ -5,7 +5,7 @@ import { addItem } from '../../redux/slices/cartSlice';
 const typeNames = ['тонке', 'традиційне'];
 const pizzaSizes = ['26', '30', '40'];
 
-function PizzaBlock({ _id, title, price, sizes, image, types }) {
+function PizzaBlock({ _id, title, price, sizes, image, types, ingredients }) {
   const dispatch = useDispatch();
   const cartItem = useSelector((state) => state.cart.items.find((obj) => obj.id === _id));
   const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
@@ -37,7 +37,16 @@ function PizzaBlock({ _id, title, price, sizes, image, types }) {
   return (
     <div className="pizza-block-wrapper">
       <div className="pizza-block">
-        <img className="pizza-block__image" src={image} alt="Pizza" />
+        <div className="card">
+          <div className="content front">
+            <img className="pizza-block__image" src={image} alt="Pizza" />
+          </div>
+          <div className="content back">
+            {ingredients?.map((el) => (
+              <p key={el}>{el}</p>
+            ))}
+          </div>
+        </div>
         <h4 className="pizza-block__title">{title}</h4>
         <div className="pizza-block__selector">
           <ul>
