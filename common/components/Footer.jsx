@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
+import Link from 'next/link';
 
 const Footer = () => {
   return (
@@ -13,7 +14,7 @@ const Footer = () => {
             <p>найсмачніша піца в Житомирі </p>
           </div>
         </div>
-        <span>©Maksym’s pizza 2023. All rights received</span>
+        <Link href="/privacyAndPolicy">©Maksym’s pizza 2023. All rights received</Link>
       </div>
       <div className="footer contacts">
         <span className="title">Контакти</span>
