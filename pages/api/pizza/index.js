@@ -11,10 +11,7 @@ export default async function handler(req, res) {
           req.query.categoryId === '0'
             ? { title: new RegExp(req.query.search, 'i') }
             : { category: req.query.categoryId, title: new RegExp(req.query.search, 'i') }
-        )
-          .sort({ [req.query.sortBy]: -1 })
-          .skip(req.query.currentPage * req.query.limit - req.query.limit)
-          .limit(req.query.limit);
+        ).sort({ [req.query.sortBy]: -1 });
         return res.status(200).json(pizza);
       } catch (error) {
         return res.status(400).json(error);

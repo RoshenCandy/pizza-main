@@ -3,6 +3,7 @@ import HomePage from '../common/pages/Home';
 import Header from '../common/components/Header';
 import { signOut } from 'next-auth/react';
 import { useSession } from 'next-auth/react';
+import Footer from '../common/components/Footer';
 
 export const searchContext = createContext();
 
@@ -17,6 +18,7 @@ export default function Home() {
       <searchContext.Provider value={{ searchValue, setSearchValue }}>
         <Header />
         <HomePage />
+        <Footer />
       </searchContext.Provider>
     </div>
   );

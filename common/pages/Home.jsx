@@ -4,7 +4,6 @@ import Categories from '../components/Categories';
 import Sort, { sortBy } from '../components/Sort';
 import PizzaBlock from '../components/PizzaBlock/index';
 import Skeleton from '../components/PizzaBlock/skeleton';
-import Pagination from '../components/Pagination';
 import axios from 'axios';
 import qs from 'qs';
 import { searchContext } from '../../pages/index';
@@ -31,7 +30,7 @@ function Home() {
 
     axios
       .get(
-        `${process.env.DOMAIN_URL}/api/pizza?sortBy=${sort.sortName}&categoryId=${categoryId}&currentPage=${currentPage}&limit=4&search=${searchValue}`
+        `${process.env.DOMAIN_URL}/api/pizza?sortBy=${sort.sortName}&categoryId=${categoryId}&currentPage=${currentPage}&limit=20&search=${searchValue}`
       )
       .then((response) => {
         setItems(response.data);
@@ -79,7 +78,6 @@ function Home() {
       <div className="content__items">
         {isLoading ? [...new Array(6)].map((_, index) => <Skeleton key={index} />) : items.map((pizza) => <PizzaBlock {...pizza} key={pizza._id} />)}
       </div>
-      <Pagination currentPage={currentPage} onChangePage={(number) => dispatch(setCurrentPage(number))} />
     </div>
   );
 }
